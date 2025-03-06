@@ -11,9 +11,10 @@ This WordPress function prevents users from right-clicking and using common keyb
 📌 Installation
 Copy the function below and paste it into your theme’s functions.php file or a custom plugin.
 
-function disable_right_click_and_shortcuts() {
+
+    function disable_right_click_and_shortcuts() {
     if (is_admin()) return; // Don't apply in admin area
-    
+
     // Get current user role
     $user = wp_get_current_user();
     $allowed_roles = array('administrator', 'editor'); // Roles that can use right-click and shortcuts
@@ -40,9 +41,8 @@ function disable_right_click_and_shortcuts() {
                 event.preventDefault();
             }
         });
-    </script>';
-}
-add_action('wp_footer', 'disable_right_click_and_shortcuts');
+    </script>'; } add_action('wp_footer', 'disable_right_click_and_shortcuts');
+
 
 Modify the $allowed_roles array to include the user roles that should be able to right-click and use shortcuts.
 Adjust the $excluded_post_types array if you want to exclude certain post types from the restriction.
